@@ -52,6 +52,7 @@ namespace Coffeed
             // typeBox
             // 
             this.typeBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.typeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.typeBox.ForeColor = System.Drawing.Color.Silver;
             this.typeBox.FormattingEnabled = true;
@@ -201,6 +202,7 @@ namespace Coffeed
             // groupBox
             // 
             this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox.ForeColor = System.Drawing.Color.Silver;
             this.groupBox.FormattingEnabled = true;

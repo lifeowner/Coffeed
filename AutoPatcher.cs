@@ -20,11 +20,11 @@ namespace Coffeed
 
             try
             {
-                double newVersion = Convert.ToDouble(client.DownloadString("https://xostme.gr/version.txt"));
+                double newVersion = Convert.ToDouble(client.DownloadString("https://raw.githubusercontent.com/lifeowner/Coffeed/main/version.txt"));
 
                 if (Program.Version < newVersion)
                 {
-                    string dlLink = $"https://github.com/lifeowner/coffeed/releases/download/{newVersion}/Coffeed.exe";
+                    string dlLink = $"https://github.com/lifeowner/Coffeed/releases/download/{newVersion}/Coffeed.exe";
                     
 
                     // backup current version

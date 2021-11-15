@@ -145,7 +145,7 @@ namespace Coffeed
             if (c(typeBox.SelectedIndex.ToString()) && c(txtFriendly.Text) && c(txtIP.Text) && c(txtUser.Text) && c(txtPass.Text) && c(txtFriendly.Text) && c(txtPort.Text) && c(groupBox.SelectedItem.ToString()))
             {
                 // MODIFY
-                if (_MODIFY_INDEX != 99)
+                if (_MODIFY_INDEX != -99)
                 {
                     DB[_MODIFY_INDEX].Type = Encrypt(typeBox.SelectedItem.ToString());
                     DB[_MODIFY_INDEX].Name = Encrypt(txtFriendly.Text);
@@ -246,6 +246,7 @@ namespace Coffeed
 
             frmAddGroup.RefreshGroups();
             groupBox.Items.Clear();
+            
             groupBox.Items.AddRange(frmAddGroup.groups.Split(','));
         }
         /*

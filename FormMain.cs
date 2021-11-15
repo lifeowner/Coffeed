@@ -265,6 +265,12 @@ namespace Coffeed
 
                     AddNew.SaveDB(AddNew.DB);
                     LoadDataToUI();
+
+                    txtIP.Text = string.Empty;
+                    txtUsername.Text = string.Empty;
+                    txtGroup.Text = string.Empty;
+                    btnTrash.Visible = false;
+                    btnModify.Visible = false;
                 }
             }
         }

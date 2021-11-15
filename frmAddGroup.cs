@@ -26,7 +26,7 @@ namespace Coffeed
         {
             try
             {
-                if (File.Exists("groups.data")) groups = File.ReadAllText("groups.dat", Encoding.UTF8).TrimEnd(',');
+                if (File.Exists("groups.dat")) groups = File.ReadAllText("groups.dat", Encoding.UTF8).TrimEnd(',');
             }
             catch (Exception err)
             {

