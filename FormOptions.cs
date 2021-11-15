@@ -1,13 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Coffeed
@@ -23,20 +17,29 @@ namespace Coffeed
 
         private void button1_Click(object sender, EventArgs e)
         {
-            System.IO.File.WriteAllText("coffeed.conf", "");
-            Settings.Write("putty_path", puttypath.Text);
-            Settings.Write("startup", checkBox1.Checked.ToString());
-            if (System.IO.File.Exists("coffeed.conf"))
+            try
             {
-                var startup = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
-                if (Settings.Read("startup").ToLowerInvariant() == "true")
+                System.IO.File.WriteAllText("coffeed.conf", "");
+                Settings.Write("putty_path", puttypath.Text);
+                Settings.Write("startup", checkBox1.Checked.ToString());
+                if (System.IO.File.Exists("coffeed.conf"))
                 {
-                    startup.SetValue("Coffeed", Path.Combine(Application.StartupPath, AppDomain.CurrentDomain.FriendlyName));
+                    var startup = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                    if (Settings.Read("startup").ToLowerInvariant() == "true")
+                    {
+                        startup.SetValue("Coffeed", Path.Combine(Application.StartupPath, AppDomain.CurrentDomain.FriendlyName));
+                    }
+                    else if (Settings.Read("startup").ToLowerInvariant() == "false")
+                    {
+                        startup.DeleteValue("Coffeed", false);
+                    }
                 }
-                else if (Settings.Read("startup").ToLowerInvariant() == "false")
-                {
-                    startup.DeleteValue("Coffeed", false);
-                }
+            }
+            catch (Exception err)
+            {
+                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+                Logging.LogError(err);
+
             }
             this.Close();
         }
@@ -51,7 +54,7 @@ namespace Coffeed
                 checkBox1.Checked = Convert.ToBoolean(Settings.Read("startup"));
             }
         }
-       
+
         private void DetectNecessaryApps()
         {
             if (!string.IsNullOrEmpty(Program.PuttyDetector()))
@@ -87,7 +90,7 @@ namespace Coffeed
             putty.DefaultExt = "exe";
             putty.FileName = "Putty.exe";
             putty.Title = "Browse Putty Path";
-            if(putty.ShowDialog() == DialogResult.OK)
+            if (putty.ShowDialog() == DialogResult.OK)
             {
                 puttypath.Text = putty.FileName;
             }
@@ -97,7 +100,7 @@ namespace Coffeed
         {
             Program.InstallFileZilla();
             DetectNecessaryApps();
-            
+
         }
 
         private void btnInstallPutty_Click(object sender, EventArgs e)

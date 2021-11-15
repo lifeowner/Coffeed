@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Microsoft.Win32;
-using System.Net;
+﻿using Microsoft.Win32;
+using System;
 using System.Diagnostics;
+using System.IO;
+using System.Net;
+using System.Windows.Forms;
 
 
 namespace Coffeed
 {
     static class Program
     {
-        static double Version = 0.1;
+        public static double Version = 0.1;
 
         static WebClient client;
 
@@ -23,6 +20,9 @@ namespace Coffeed
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            AutoPatcher.Patch();
+            Logging.InitLog();
+
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             client = new WebClient()
@@ -31,6 +31,7 @@ namespace Coffeed
             };
 
             client.Headers.Add("User-Agent: Other");
+
             if (!string.IsNullOrEmpty(PuttyDetector()) && !string.IsNullOrEmpty(FileZillaDetector()))
             {
                 if (File.Exists("PublicKey.xml"))
@@ -51,42 +52,51 @@ namespace Coffeed
 
         public static string PuttyDetector()
         {
-            RegistryView rv = RegistryView.Registry32;
-            if (Environment.Is64BitOperatingSystem) rv = RegistryView.Registry64;
-            var keyView = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv);
-
-            var key32 = keyView.OpenSubKey(@"SOFTWARE\WOW6432Node\SimonTatham\PuTTY\CHMPath", false);
-            var key64 = keyView.OpenSubKey(@"SOFTWARE\SimonTatham\PuTTY64\CHMPath", false);
-           
             var result = string.Empty;
 
-            if (key32 != null)
+            try
             {
-                var puttyPath = Path.Combine(Path.GetDirectoryName(key32.GetValue("").ToString()), "putty.exe");
-                if (File.Exists(puttyPath))
+                RegistryView rv = RegistryView.Registry32;
+                if (Environment.Is64BitOperatingSystem) rv = RegistryView.Registry64;
+                var keyView = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv);
+
+                var key32 = keyView.OpenSubKey(@"SOFTWARE\WOW6432Node\SimonTatham\PuTTY\CHMPath", false);
+                var key64 = keyView.OpenSubKey(@"SOFTWARE\SimonTatham\PuTTY64\CHMPath", false);
+
+                if (key32 != null)
                 {
-                    result = puttyPath;
+                    var puttyPath = Path.Combine(Path.GetDirectoryName(key32.GetValue("").ToString()), "putty.exe");
+                    if (File.Exists(puttyPath))
+                    {
+                        result = puttyPath;
+                    }
+                    else
+                    {
+                        result = string.Empty;
+                    }
                 }
-                else
+
+                if (key64 != null)
                 {
-                    result = string.Empty;
+
+                    var puttyPath = Path.Combine(Path.GetDirectoryName(key64.GetValue("").ToString()), "putty.exe");
+                    if (File.Exists(puttyPath))
+                    {
+
+                        result = puttyPath;
+                    }
+                    else
+                    {
+
+                        result = string.Empty;
+                    }
                 }
             }
-
-            if (key64 != null)
+            catch (Exception err)
             {
-
-                var puttyPath = Path.Combine(Path.GetDirectoryName(key64.GetValue("").ToString()), "putty.exe");
-                if (File.Exists(puttyPath))
-                {
-
-                    result = puttyPath;
-                }
-                else
-                {
-
-                    result = string.Empty;
-                }
+                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+                Logging.LogError(err);
+                return string.Empty;
             }
 
             return result;
@@ -94,46 +104,75 @@ namespace Coffeed
 
         public static string FileZillaDetector()
         {
-            RegistryView rv = RegistryView.Registry32;
-            if (Environment.Is64BitOperatingSystem) rv = RegistryView.Registry64;
-            var key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv);
+            string result = string.Empty;
 
-            string path = (string)key.OpenSubKey(@"SOFTWARE\WOW6432Node\FileZilla Client").GetValue("", string.Empty);
-
-            if (System.IO.File.Exists(Path.Combine(path, "filezilla.exe")))
+            try
             {
-                return Path.Combine(path, "filezilla.exe");
+                RegistryView rv = RegistryView.Registry32;
+                if (Environment.Is64BitOperatingSystem) rv = RegistryView.Registry64;
+                var key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv);
+
+                string path = (string)key.OpenSubKey(@"SOFTWARE\WOW6432Node\FileZilla Client").GetValue("", string.Empty);
+
+                if (System.IO.File.Exists(Path.Combine(path, "filezilla.exe")))
+                {
+                    result = Path.Combine(path, "filezilla.exe");
+                }
+                else
+                {
+                    result = string.Empty;
+                }
             }
-            else
+            catch (Exception err)
             {
+                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+                Logging.LogError(err);
                 return string.Empty;
             }
+
+            return result;
         }
 
         public static void InstallFileZilla()
         {
-            string link = "https://download.filezilla-project.org/client/FileZilla_3.56.2_win32-setup.exe";
-            if (Environment.Is64BitOperatingSystem) link = "https://download.filezilla-project.org/client/FileZilla_3.56.2_win64-setup.exe";
+            try
+            {
+                string link = "https://download.filezilla-project.org/client/FileZilla_3.56.2_win32-setup.exe";
+                if (Environment.Is64BitOperatingSystem) link = "https://download.filezilla-project.org/client/FileZilla_3.56.2_win64-setup.exe";
 
-            client.DownloadFile(link, Path.Combine(Path.GetTempPath(), "FileZillaSetup.exe"));
+                client.DownloadFile(link, Path.Combine(Path.GetTempPath(), "FileZillaSetup.exe"));
 
-            Process p = new Process();
-            p.StartInfo.WorkingDirectory = Path.GetTempPath();
-            p.StartInfo.FileName = Path.Combine(Path.GetTempPath(), "FileZillaSetup.exe");
-            p.Start();
-            p.WaitForExit();
+                Process p = new Process();
+                p.StartInfo.WorkingDirectory = Path.GetTempPath();
+                p.StartInfo.FileName = Path.Combine(Path.GetTempPath(), "FileZillaSetup.exe");
+                p.Start();
+                p.WaitForExit();
+            }
+            catch (Exception err)
+            {
+                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+                Logging.LogError(err);
+            }
         }
         public static void InstallPutty()
         {
-            string link = "https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.76-installer.msi";
-            if (Environment.Is64BitOperatingSystem) link = "https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.76-installer.msi";
+            try
+            {
+                string link = "https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.76-installer.msi";
+                if (Environment.Is64BitOperatingSystem) link = "https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.76-installer.msi";
 
-            client.DownloadFile(link, Path.Combine(Path.GetTempPath(),"PuttySetup.msi"));
-            Process p = new Process();
-            p.StartInfo.WorkingDirectory = Path.GetTempPath();
-            p.StartInfo.FileName = Path.Combine(Path.GetTempPath(), "PuttySetup.msi");
-            p.Start();
-            p.WaitForExit();
+                client.DownloadFile(link, Path.Combine(Path.GetTempPath(), "PuttySetup.msi"));
+                Process p = new Process();
+                p.StartInfo.WorkingDirectory = Path.GetTempPath();
+                p.StartInfo.FileName = Path.Combine(Path.GetTempPath(), "PuttySetup.msi");
+                p.Start();
+                p.WaitForExit();
+            }
+            catch (Exception err)
+            {
+                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+                Logging.LogError(err);
+            }
         }
     }
 }

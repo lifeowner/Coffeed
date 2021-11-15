@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Resources;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Coffeed
@@ -42,21 +34,30 @@ namespace Coffeed
             var publicsw = new StreamWriter("PublicKey.xml", false, Encoding.UTF8);
             if (checkBox1.Checked)
             {
-                RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-                using (privsw)
+                try
                 {
+                    RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+                    using (privsw)
+                    {
 
-                    privsw.WriteLine(rsa.ToXmlString(true));
-                    Properties.Settings.Default.privkeypath = PrivateKeyPath;
-                    Properties.Settings.Default.Save();
+                        privsw.WriteLine(rsa.ToXmlString(true));
+                        Properties.Settings.Default.privkeypath = PrivateKeyPath;
+                        Properties.Settings.Default.Save();
+                    }
+                    using (publicsw)
+                    {
+
+                        publicsw.WriteLine(rsa.ToXmlString(false));
+
+                    }
+                    Application.Restart();
                 }
-                using (publicsw)
+                catch (Exception err)
                 {
-
-                    publicsw.WriteLine(rsa.ToXmlString(false));
-
+                    Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+                    Logging.LogError(err);
                 }
-                Application.Restart();
+
             }
             else
             {

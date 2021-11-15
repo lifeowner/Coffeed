@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace Coffeed
 {
@@ -23,7 +15,8 @@ namespace Coffeed
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!GroupExists(groupName.Text)) {
+            if (!GroupExists(groupName.Text))
+            {
                 File.AppendAllText("groups.dat", groupName.Text + ",");
                 this.Close();
             }
@@ -31,17 +24,26 @@ namespace Coffeed
 
         internal static void RefreshGroups()
         {
-            groups = File.ReadAllText("groups.dat", Encoding.UTF8).TrimEnd(',');
+            try
+            {
+                if (File.Exists("groups.data")) groups = File.ReadAllText("groups.dat", Encoding.UTF8).TrimEnd(',');
+            }
+            catch (Exception err)
+            {
+                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+                Logging.LogError(err);
+            }
+
         }
- 
+
         public bool GroupExists(string groupName)
         {
-            
+
             var allGroups = groups.Split(',');
             var result = false;
-            foreach(var g in allGroups)
+            foreach (var g in allGroups)
             {
-                if(g == groupName)
+                if (g == groupName)
                 {
                     result = true;
                     break;
@@ -55,17 +57,30 @@ namespace Coffeed
         }
         public void removeGroup(string key)
         {
-            if (File.Exists("groups.dat"))
+            try
             {
-                var data = File.ReadAllText("groups.dat", Encoding.UTF8).TrimEnd(',');
+                if (File.Exists("groups.dat"))
+                {
+                    var data = File.ReadAllText("groups.dat", Encoding.UTF8).TrimEnd(',');
 
-                data = data.Replace(key + ",", string.Empty);
-                File.WriteAllText("groups.dat", data, Encoding.UTF8);
+                    data = data.Replace(key + ",", string.Empty);
+                    File.WriteAllText("groups.dat", data, Encoding.UTF8);
+                }
+
             }
+            catch (Exception err)
+            {
+                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+                Logging.LogError(err);
+
+            }
+
         }
 
+        private void frmAddGroup_Load(object sender, EventArgs e)
+        {
 
-
+        }
     }
 
 }

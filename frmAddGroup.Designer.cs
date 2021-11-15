@@ -84,6 +84,7 @@ namespace Coffeed
             this.Name = "frmAddGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add a new group";
+            this.Load += new System.EventHandler(this.frmAddGroup_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

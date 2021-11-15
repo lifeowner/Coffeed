@@ -73,9 +73,69 @@ namespace Coffeed.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _185042_edit_modify_icon {
+            get {
+                object obj = ResourceManager.GetObject("185042_edit_modify_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2849797_trash_basket_multimedia_icon {
+            get {
+                object obj = ResourceManager.GetObject("2849797_trash_basket_multimedia_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2931190_fit_search_zoom_glass_view_icon {
+            get {
+                object obj = ResourceManager.GetObject("2931190_fit_search_zoom_glass_view_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2931190_fit_search_zoom_glass_view_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("2931190_fit_search_zoom_glass_view_icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _3325032_settings_icon {
             get {
                 object obj = ResourceManager.GetObject("3325032_settings_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _48746_coffee_icon {
+            get {
+                object obj = ResourceManager.GetObject("48746_coffee_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _8207898_about_info_information_help_ui_icon {
+            get {
+                object obj = ResourceManager.GetObject("8207898_about_info_information_help_ui_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

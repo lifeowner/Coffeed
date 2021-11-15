@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Coffeed
@@ -23,7 +16,7 @@ namespace Coffeed
             ofd.Filter = "Private Key | *.xml";
             ofd.DefaultExt = "xml";
             ofd.FileName = "PrivateKey";
-            if(ofd.ShowDialog() == DialogResult.OK)
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
                 privkeypath.Text = ofd.FileName;
             }

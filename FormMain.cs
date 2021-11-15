@@ -1,18 +1,12 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Win32;
 
 namespace Coffeed
 {
@@ -25,6 +19,11 @@ namespace Coffeed
         public FormMain()
         {
             InitializeComponent();
+
+            this.listMenu.Renderer = new MyRenderer();
+            this.trayMenu.Renderer = new MyRenderer();
+
+            this.Text = "Coffeed " + Program.Version;
 
             FileZillaClient = Program.FileZillaDetector();
         }
@@ -40,40 +39,49 @@ namespace Coffeed
         string privKey = "";
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (!File.Exists("groups.dat")) File.WriteAllText("groups.dat", string.Empty);
 
-            if (System.IO.File.Exists("coffeed.conf"))
+            try
             {
-                var startup = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run",true);
-                if (settings.Read("startup").ToLowerInvariant() == "true")
+                if (!File.Exists("groups.dat")) File.WriteAllText("groups.dat", string.Empty);
+
+                if (System.IO.File.Exists("coffeed.conf"))
                 {
-                    startup.SetValue("Coffeed", Path.Combine(Application.StartupPath, AppDomain.CurrentDomain.FriendlyName));
+                    var startup = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                    if (settings.Read("startup").ToLowerInvariant() == "true")
+                    {
+                        startup.SetValue("Coffeed", Path.Combine(Application.StartupPath, AppDomain.CurrentDomain.FriendlyName));
+                    }
+                    else if (settings.Read("startup").ToLowerInvariant() == "false")
+                    {
+                        startup.DeleteValue("Coffeed", false);
+                    }
                 }
-                else if (settings.Read("startup").ToLowerInvariant() == "false")
+
+
+                if (File.Exists(Application.StartupPath + @"\PublicKey.xml"))
                 {
-                    startup.DeleteValue("Coffeed", false);
+                    pubKey = File.ReadAllText(Application.StartupPath + @"\PublicKey.xml");
                 }
-            }
+                if (File.Exists(Properties.Settings.Default.privkeypath))
+                {
+                    privKey = File.ReadAllText(Properties.Settings.Default.privkeypath);
 
-                this.listMenu.Renderer = new MyRenderer();
-            this.trayMenu.Renderer = new MyRenderer();
-            if (File.Exists(Application.StartupPath + @"\PublicKey.xml"))
-            {
-                pubKey = File.ReadAllText(Application.StartupPath + @"\PublicKey.xml");
+                }
+                else
+                {
+                    MessageBox.Show("Your private key couldn't be found, please set the proper path to your Private Key.", "Oops, private key wasn't found!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    FormPrivKey PrivKeyBrowser = new FormPrivKey();
+                    PrivKeyBrowser.ShowDialog();
+                }
+
+                LoadDataToUI();
             }
-            if (File.Exists(Properties.Settings.Default.privkeypath))
+            catch (Exception err)
             {
-                privKey = File.ReadAllText(Properties.Settings.Default.privkeypath);
+                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+                Logging.LogError(err);
 
             }
-            else
-            {
-                MessageBox.Show("Your private key couldn't be found, please set the proper path to your Private Key.", "Oops, private key wasn't found!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                FormPrivKey PrivKeyBrowser = new FormPrivKey();
-                PrivKeyBrowser.ShowDialog();
-            }
-
-            LoadDataToUI();
         }
 
         private void LoadDataToUI()
@@ -90,7 +98,7 @@ namespace Coffeed
             ToolStripMenuItem exitItem = new ToolStripMenuItem
             {
                 ForeColor = Color.Tomato,
-                Text = "× Exit"
+                Text = "Exit"
             };
 
             exitItem.Click += ExitItem_Click;
@@ -100,7 +108,7 @@ namespace Coffeed
             frmAddGroup.RefreshGroups();
             foreach (string g in frmAddGroup.groups.Split(','))
             {
-                item = new ToolStripMenuItem("• " + g);
+                item = new ToolStripMenuItem(g);
                 item.ForeColor = Color.Silver;
 
                 var z = AddNew.DB.FindAll(x => AddNew.Decrypt(x.Group) == g);
@@ -117,7 +125,7 @@ namespace Coffeed
                 }
             }
 
-            
+
 
             trayMenu.Items.Add(exitItem);
         }
@@ -167,7 +175,7 @@ namespace Coffeed
                         Process sftpprocess = new Process();
                         string sftpFlag = "ftp";
                         if (AddNew.Decrypt(acc.SFTP) == "true") sftpFlag = "sftp";
-                        
+
                         sftpprocess.StartInfo.FileName = Environment.ExpandEnvironmentVariables(@"%SystemRoot%\system32\cmd.exe");
                         sftpprocess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                         sftpprocess.StartInfo.Arguments = $"/c \"{FileZillaClient}\" {sftpFlag}://{AddNew.Decrypt(acc.User)}:{AddNew.Decrypt(acc.Pass)}@{AddNew.Decrypt(acc.IP)}:{AddNew.Decrypt(acc.Port)}";
@@ -238,6 +246,11 @@ namespace Coffeed
         }
         private void removeCredsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DeleteItem();
+        }
+
+        private void DeleteItem()
+        {
             if (serverBox.SelectedIndex >= 0)
             {
                 if (MessageBox.Show($"Are you sure you want to remove {serverBox.SelectedItem.ToString()} ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -247,7 +260,7 @@ namespace Coffeed
                     AddNew._privateKey = Properties.Settings.Default.privkeypath;
 
                     int toDelete = AddNew.DB.FindIndex(x => AddNew.Decrypt(x.Name) == serverBox.SelectedItem.ToString());
-                     
+
                     if (toDelete >= 0) AddNew.DB.RemoveAt(toDelete);
 
                     AddNew.SaveDB(AddNew.DB);
@@ -264,11 +277,17 @@ namespace Coffeed
 
         private void textBox5_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
+            txtIP.Text = string.Empty;
+            txtUsername.Text = string.Empty;
+            txtGroup.Text = string.Empty;
+            btnTrash.Visible = false;
+            btnModify.Visible = false;
+
             if (!string.IsNullOrEmpty(textBox5.Text))
             {
                 FormAdd AddNew = new FormAdd();
@@ -276,17 +295,78 @@ namespace Coffeed
                 AddNew._privateKey = Properties.Settings.Default.privkeypath;
 
                 serverBox.Items.Clear();
+
                 foreach (var x in findIt(textBox5.Text))
-                { 
+                {
                     serverBox.Items.Add(AddNew.Decrypt(x.Name));
                 }
 
-                
+
             }
             else
             {
                 LoadDataToUI();
             }
+        }
+
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DeleteItem();
+        }
+
+        private void serverBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (serverBox.SelectedIndex < 0) return; //exiame
+
+            FormAdd AddNew = new FormAdd();
+            AddNew._publicKey = Application.StartupPath + @"\PublicKey.xml";
+            AddNew._privateKey = Properties.Settings.Default.privkeypath;
+
+            var x = AddNew.DB.Find(y => AddNew.Decrypt(y.Name) == serverBox.SelectedItem.ToString());
+            txtIP.Text = "IP Address: " + AddNew.Decrypt(x.IP);
+            txtUsername.Text = "Username: " + AddNew.Decrypt(x.User);
+            txtGroup.Text = "In Group: " + AddNew.Decrypt(x.Type);
+
+            txtIP.Visible = true;
+            txtUsername.Visible = true;
+            txtGroup.Visible = true;
+            btnTrash.Visible = true;
+            btnModify.Visible = true;
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            new frmAbout().ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (serverBox.SelectedIndex >= 0)
+            {
+                // des ithele 2 init to AddNew me th mpakalia what?????? des kalutera.. OOOOOOOOOOOOOOOXI RE MALAKAAAA
+                FormAdd AddNew = new FormAdd();
+                AddNew._publicKey = Application.StartupPath + @"\PublicKey.xml";
+                AddNew._privateKey = Properties.Settings.Default.privkeypath;
+
+                int toModify = AddNew.DB.FindIndex(x => AddNew.Decrypt(x.Name) == serverBox.SelectedItem.ToString());
+                AddNew = new FormAdd(toModify);
+                AddNew.ShowDialog();
+
+                LoadDataToUI();
+
+            }
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            DialogResult coffee;
+            do
+            {
+                coffee = MessageBox.Show("You can drink more coffee from now on, using this application, with peace of mind!", "Do you want more coffee?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            }
+            while (coffee != DialogResult.Yes);
         }
     }
 
@@ -313,7 +393,7 @@ public class MyColorTable : ProfessionalColorTable
     }
     public override Color MenuItemSelected
     {
-        get { return Color.FromArgb(20,20,20); }
+        get { return Color.FromArgb(20, 20, 20); }
     }
     public override Color ToolStripDropDownBackground
     {
@@ -331,11 +411,11 @@ public class MyColorTable : ProfessionalColorTable
     {
         get { return Color.FromArgb(1, 1, 1); }
     }
-    
+
 }
 public class MyRenderer : ToolStripProfessionalRenderer
 {
-    public MyRenderer(): base(new MyColorTable())
+    public MyRenderer() : base(new MyColorTable())
     {
     }
     protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)

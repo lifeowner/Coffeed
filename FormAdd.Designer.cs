@@ -30,50 +30,50 @@ namespace Coffeed
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdd));
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.typeBox = new System.Windows.Forms.ComboBox();
+            this.txtIP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtFriendly = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtPort = new System.Windows.Forms.TextBox();
             this.checkFTP = new System.Windows.Forms.CheckBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.groupBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // typeBox
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.ForeColor = System.Drawing.Color.Silver;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.typeBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.typeBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.typeBox.ForeColor = System.Drawing.Color.Silver;
+            this.typeBox.FormattingEnabled = true;
+            this.typeBox.Items.AddRange(new object[] {
             "RDP",
             "Putty",
             "FileZilla"});
-            this.comboBox1.Location = new System.Drawing.Point(12, 22);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(428, 21);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.typeBox.Location = new System.Drawing.Point(12, 22);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(428, 21);
+            this.typeBox.TabIndex = 0;
+            this.typeBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // textBox1
+            // txtIP
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.ForeColor = System.Drawing.Color.Silver;
-            this.textBox1.Location = new System.Drawing.Point(12, 166);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(428, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.txtIP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIP.ForeColor = System.Drawing.Color.Silver;
+            this.txtIP.Location = new System.Drawing.Point(12, 166);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(428, 20);
+            this.txtIP.TabIndex = 3;
             // 
             // label1
             // 
@@ -97,15 +97,15 @@ namespace Coffeed
             this.label2.TabIndex = 11;
             this.label2.Text = "Username";
             // 
-            // textBox2
+            // txtUser
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.ForeColor = System.Drawing.Color.Silver;
-            this.textBox2.Location = new System.Drawing.Point(12, 205);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(428, 20);
-            this.textBox2.TabIndex = 4;
+            this.txtUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUser.ForeColor = System.Drawing.Color.Silver;
+            this.txtUser.Location = new System.Drawing.Point(12, 205);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(428, 20);
+            this.txtUser.TabIndex = 4;
             // 
             // label3
             // 
@@ -118,16 +118,16 @@ namespace Coffeed
             this.label3.TabIndex = 12;
             this.label3.Text = "Password";
             // 
-            // textBox3
+            // txtPass
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.ForeColor = System.Drawing.Color.Silver;
-            this.textBox3.Location = new System.Drawing.Point(12, 248);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(428, 20);
-            this.textBox3.TabIndex = 5;
-            this.textBox3.UseSystemPasswordChar = true;
+            this.txtPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPass.ForeColor = System.Drawing.Color.Silver;
+            this.txtPass.Location = new System.Drawing.Point(12, 248);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Size = new System.Drawing.Size(428, 20);
+            this.txtPass.TabIndex = 5;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -140,15 +140,15 @@ namespace Coffeed
             this.label4.TabIndex = 9;
             this.label4.Text = "Friendly name";
             // 
-            // textBox4
+            // txtFriendly
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.ForeColor = System.Drawing.Color.Silver;
-            this.textBox4.Location = new System.Drawing.Point(12, 123);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(428, 20);
-            this.textBox4.TabIndex = 2;
+            this.txtFriendly.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.txtFriendly.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFriendly.ForeColor = System.Drawing.Color.Silver;
+            this.txtFriendly.Location = new System.Drawing.Point(12, 123);
+            this.txtFriendly.Name = "txtFriendly";
+            this.txtFriendly.Size = new System.Drawing.Size(428, 20);
+            this.txtFriendly.TabIndex = 2;
             // 
             // button1
             // 
@@ -174,16 +174,16 @@ namespace Coffeed
             this.label5.TabIndex = 13;
             this.label5.Text = "Port";
             // 
-            // textBox5
+            // txtPort
             // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.ForeColor = System.Drawing.Color.Silver;
-            this.textBox5.Location = new System.Drawing.Point(12, 289);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(428, 20);
-            this.textBox5.TabIndex = 6;
-            this.textBox5.Text = "22";
+            this.txtPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.txtPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPort.ForeColor = System.Drawing.Color.Silver;
+            this.txtPort.Location = new System.Drawing.Point(12, 289);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(428, 20);
+            this.txtPort.TabIndex = 6;
+            this.txtPort.Text = "22";
             // 
             // checkFTP
             // 
@@ -198,16 +198,16 @@ namespace Coffeed
             this.checkFTP.UseVisualStyleBackColor = true;
             this.checkFTP.Visible = false;
             // 
-            // comboBox2
+            // groupBox
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.ForeColor = System.Drawing.Color.Silver;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(12, 73);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(411, 21);
-            this.comboBox2.TabIndex = 1;
+            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox.ForeColor = System.Drawing.Color.Silver;
+            this.groupBox.FormattingEnabled = true;
+            this.groupBox.Location = new System.Drawing.Point(12, 73);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(411, 21);
+            this.groupBox.TabIndex = 1;
             // 
             // label6
             // 
@@ -253,20 +253,20 @@ namespace Coffeed
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.groupBox);
             this.Controls.Add(this.checkFTP);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtPort);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtFriendly);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtPass);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtUser);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.txtIP);
+            this.Controls.Add(this.typeBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -282,20 +282,20 @@ namespace Coffeed
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox typeBox;
+        private System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtFriendly;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.CheckBox checkFTP;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox groupBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label7;

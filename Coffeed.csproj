@@ -50,6 +50,19 @@
   <PropertyGroup>
     <ApplicationIcon>48746_coffee_icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>17F4D6CF94657CC731559810B3397976B82BB6D2</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -95,6 +108,12 @@
     <Compile Include="FormOptions.Designer.cs">
       <DependentUpon>FormOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +127,8 @@
       <DependentUpon>frmSoftwareDetector.cs</DependentUpon>
     </Compile>
     <Compile Include="IniReader.cs" />
+    <Compile Include="Logging.cs" />
+    <Compile Include="MessageBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
@@ -125,6 +146,9 @@
     <EmbeddedResource Include="FormOptions.resx">
       <DependentUpon>FormOptions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddGroup.resx">
       <DependentUpon>frmAddGroup.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +165,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="5years.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -160,6 +185,12 @@
   <ItemGroup>
     <Content Include="1743798_key_cyber lock_secure_icon %281%29 %281%29.ico" />
     <Content Include="48746_coffee_icon.ico" />
+    <None Include="images\185042_edit_modify_icon.png" />
+    <None Include="images\48746_coffee_icon.png" />
+    <None Include="Resources\2931190_fit_search_zoom_glass_view_icon1.png" />
+    <None Include="Resources\8207898_about_info_information_help_ui_icon.png" />
+    <None Include="Resources\2931190_fit_search_zoom_glass_view_icon.png" />
+    <None Include="Resources\2849797_trash_basket_multimedia_icon.png" />
     <None Include="images\3325032_settings_icon.png" />
   </ItemGroup>
   <ItemGroup>
