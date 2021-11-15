@@ -82,12 +82,10 @@ namespace Coffeed
                     var puttyPath = Path.Combine(Path.GetDirectoryName(key64.GetValue("").ToString()), "putty.exe");
                     if (File.Exists(puttyPath))
                     {
-                        MessageBox.Show(puttyPath);
                         result = puttyPath;
                     }
                     else
                     {
-                        MessageBox.Show("x64 putty nopt found?");
                         result = string.Empty;
                     }
                 }

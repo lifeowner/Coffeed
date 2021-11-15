@@ -14,6 +14,7 @@ namespace Coffeed
     {
         IniFile settings = new IniFile("coffeed.conf");
         readonly string FileZillaClient = string.Empty;
+        readonly string PuttyClient = string.Empty;
         bool isRealExit = false;
 
         public FormMain()
@@ -26,6 +27,7 @@ namespace Coffeed
             this.Text = "Coffeed " + Program.Version;
 
             FileZillaClient = Program.FileZillaDetector();
+            PuttyClient = Program.PuttyDetector();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -183,11 +185,18 @@ namespace Coffeed
                         break;
                     case "Putty":
                         Process puttylogin = new Process();
-                        if (System.IO.File.Exists("coffeed.conf"))
+                        if (File.Exists("coffeed.conf"))
                         {
                             if (string.IsNullOrEmpty(settings.Read("putty_path")))
                             {
-                                puttylogin.StartInfo.FileName = Application.StartupPath + @"\putty.exe";
+                                if(File.Exists(Application.StartupPath + @"\putty.exe"))
+                                {
+                                    puttylogin.StartInfo.FileName = Application.StartupPath + @"\putty.exe";
+                                }
+                                else
+                                {
+                                    puttylogin.StartInfo.FileName = PuttyClient;
+                                }
                             }
                             else
                             {
@@ -196,7 +205,14 @@ namespace Coffeed
                         }
                         else
                         {
-                            puttylogin.StartInfo.FileName = Application.StartupPath + @"\putty.exe";
+                            if(File.Exists(Application.StartupPath + @"\putty.exe"))
+                            {
+                                puttylogin.StartInfo.FileName = Application.StartupPath + @"\putty.exe";
+                            }
+                            else
+                            {
+                                puttylogin.StartInfo.FileName = PuttyClient;
+                            }
                         }
                         puttylogin.StartInfo.Arguments = "-ssh " + AddNew.Decrypt(acc.User) + "@" + AddNew.Decrypt(acc.IP) + " -pw " + AddNew.Decrypt(acc.Pass) + " -P " + AddNew.Decrypt(acc.Port);
                         puttylogin.Start();
