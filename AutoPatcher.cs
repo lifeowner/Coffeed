@@ -25,7 +25,6 @@ namespace Coffeed
                 if (Program.Version < newVersion)
                 {
                     string dlLink = $"https://github.com/lifeowner/Coffeed/releases/download/{newVersion}/Coffeed.exe";
-                    
 
                     // backup current version
                     string file = Path.Combine(Application.StartupPath, Assembly.GetExecutingAssembly().GetName().Name);
