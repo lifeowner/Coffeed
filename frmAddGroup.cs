@@ -7,7 +7,7 @@ namespace Coffeed
 {
     public partial class frmAddGroup : Form
     {
-        public static string groups = File.ReadAllText("groups.dat", Encoding.UTF8).TrimEnd(',');
+        public static string groups = File.ReadAllText(Path.Combine(Application.StartupPath, "groups.dat"), Encoding.UTF8).TrimEnd(',');
         public frmAddGroup()
         {
             InitializeComponent();
@@ -17,7 +17,7 @@ namespace Coffeed
         {
             if (!GroupExists(groupName.Text))
             {
-                File.AppendAllText("groups.dat", groupName.Text + ",");
+                File.AppendAllText(Path.Combine(Application.StartupPath, "groups.dat"), groupName.Text + ",");
                 this.Close();
             }
         }
@@ -26,7 +26,7 @@ namespace Coffeed
         {
             try
             {
-                if (File.Exists("groups.dat")) groups = File.ReadAllText("groups.dat", Encoding.UTF8).TrimEnd(',');
+                if (File.Exists(Path.Combine(Application.StartupPath, "groups.dat"))) groups = File.ReadAllText(Path.Combine(Application.StartupPath, "groups.dat"), Encoding.UTF8).TrimEnd(',');
             }
             catch (Exception err)
             {
@@ -59,12 +59,12 @@ namespace Coffeed
         {
             try
             {
-                if (File.Exists("groups.dat"))
+                if (File.Exists(Path.Combine(Application.StartupPath, "groups.dat")))
                 {
-                    var data = File.ReadAllText("groups.dat", Encoding.UTF8).TrimEnd(',');
+                    var data = File.ReadAllText(Path.Combine(Application.StartupPath, "groups.dat"), Encoding.UTF8).TrimEnd(',');
 
                     data = data.Replace(key + ",", string.Empty);
-                    File.WriteAllText("groups.dat", data, Encoding.UTF8);
+                    File.WriteAllText(Path.Combine(Application.StartupPath, "groups.dat"), data, Encoding.UTF8);
                 }
 
             }

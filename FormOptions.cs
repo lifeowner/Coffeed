@@ -8,7 +8,7 @@ namespace Coffeed
 {
     public partial class FormOptions : Form
     {
-        IniFile Settings = new IniFile("coffeed.conf");
+        IniFile Settings = new IniFile(Path.Combine(Application.StartupPath, "coffeed.conf"));
 
         public FormOptions()
         {
@@ -19,10 +19,10 @@ namespace Coffeed
         {
             try
             {
-                System.IO.File.WriteAllText("coffeed.conf", "");
+                System.IO.File.WriteAllText(Path.Combine(Application.StartupPath, "coffeed.conf"), "");
                 Settings.Write("putty_path", puttypath.Text);
                 Settings.Write("startup", checkBox1.Checked.ToString());
-                if (System.IO.File.Exists("coffeed.conf"))
+                if (System.IO.File.Exists(Path.Combine(Application.StartupPath, "coffeed.conf")))
                 {
                     var startup = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                     if (Settings.Read("startup").ToLowerInvariant() == "true")
@@ -48,7 +48,7 @@ namespace Coffeed
         {
             DetectNecessaryApps();
 
-            if (System.IO.File.Exists("coffeed.conf"))
+            if (System.IO.File.Exists(Path.Combine(Application.StartupPath,"coffeed.conf")))
             {
                 puttypath.Text = Settings.Read("putty_path");
                 checkBox1.Checked = Convert.ToBoolean(Settings.Read("startup"));

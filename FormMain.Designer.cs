@@ -39,17 +39,21 @@ namespace Coffeed
             this.trayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.botPanel = new System.Windows.Forms.Panel();
-            this.btnModify = new System.Windows.Forms.Button();
-            this.btnTrash = new System.Windows.Forms.Button();
+            this.btnCUser = new System.Windows.Forms.Button();
+            this.btnCIP = new System.Windows.Forms.Button();
             this.txtGroup = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.Label();
             this.topPanel = new System.Windows.Forms.Panel();
+            this.btnRestore = new System.Windows.Forms.Button();
+            this.btnBackup = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.btnTrash = new System.Windows.Forms.Button();
             this.listMenu.SuspendLayout();
             this.botPanel.SuspendLayout();
             this.topPanel.SuspendLayout();
@@ -125,6 +129,8 @@ namespace Coffeed
             // 
             // botPanel
             // 
+            this.botPanel.Controls.Add(this.btnCUser);
+            this.botPanel.Controls.Add(this.btnCIP);
             this.botPanel.Controls.Add(this.btnModify);
             this.botPanel.Controls.Add(this.btnTrash);
             this.botPanel.Controls.Add(this.txtGroup);
@@ -136,50 +142,42 @@ namespace Coffeed
             this.botPanel.Size = new System.Drawing.Size(556, 69);
             this.botPanel.TabIndex = 8;
             // 
-            // btnModify
+            // btnCUser
             // 
-            this.btnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModify.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnModify.BackgroundImage = global::Coffeed.Properties.Resources._185042_edit_modify_icon;
-            this.btnModify.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnModify.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnModify.FlatAppearance.BorderSize = 3;
-            this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModify.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.btnModify.Location = new System.Drawing.Point(484, 34);
-            this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(36, 35);
-            this.btnModify.TabIndex = 15;
-            this.btnModify.UseVisualStyleBackColor = false;
-            this.btnModify.Visible = false;
-            this.btnModify.Click += new System.EventHandler(this.button4_Click);
+            this.btnCUser.BackColor = System.Drawing.Color.Orange;
+            this.btnCUser.FlatAppearance.BorderSize = 0;
+            this.btnCUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCUser.Location = new System.Drawing.Point(3, 24);
+            this.btnCUser.Name = "btnCUser";
+            this.btnCUser.Size = new System.Drawing.Size(28, 20);
+            this.btnCUser.TabIndex = 20;
+            this.btnCUser.Text = "✄";
+            this.btnCUser.UseVisualStyleBackColor = false;
+            this.btnCUser.Visible = false;
+            this.btnCUser.Click += new System.EventHandler(this.btnCUser_Click);
             // 
-            // btnTrash
+            // btnCIP
             // 
-            this.btnTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTrash.BackColor = System.Drawing.Color.Tomato;
-            this.btnTrash.BackgroundImage = global::Coffeed.Properties.Resources._2849797_trash_basket_multimedia_icon;
-            this.btnTrash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTrash.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
-            this.btnTrash.FlatAppearance.BorderSize = 3;
-            this.btnTrash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTrash.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.btnTrash.Location = new System.Drawing.Point(520, 34);
-            this.btnTrash.Name = "btnTrash";
-            this.btnTrash.Size = new System.Drawing.Size(36, 35);
-            this.btnTrash.TabIndex = 14;
-            this.btnTrash.UseVisualStyleBackColor = false;
-            this.btnTrash.Visible = false;
-            this.btnTrash.Click += new System.EventHandler(this.button3_Click);
+            this.btnCIP.BackColor = System.Drawing.Color.Orange;
+            this.btnCIP.FlatAppearance.BorderSize = 0;
+            this.btnCIP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCIP.Location = new System.Drawing.Point(3, 1);
+            this.btnCIP.Name = "btnCIP";
+            this.btnCIP.Size = new System.Drawing.Size(28, 20);
+            this.btnCIP.TabIndex = 19;
+            this.btnCIP.Text = "✄";
+            this.btnCIP.UseVisualStyleBackColor = false;
+            this.btnCIP.Visible = false;
+            this.btnCIP.Click += new System.EventHandler(this.btnCIP_Click);
             // 
             // txtGroup
             // 
             this.txtGroup.AutoSize = true;
             this.txtGroup.Font = new System.Drawing.Font("Fira Code Retina", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGroup.ForeColor = System.Drawing.Color.Silver;
-            this.txtGroup.Location = new System.Drawing.Point(3, 52);
+            this.txtGroup.Location = new System.Drawing.Point(1, 51);
             this.txtGroup.Name = "txtGroup";
             this.txtGroup.Size = new System.Drawing.Size(63, 15);
             this.txtGroup.TabIndex = 13;
@@ -191,7 +189,7 @@ namespace Coffeed
             this.txtUsername.AutoSize = true;
             this.txtUsername.Font = new System.Drawing.Font("Fira Code Retina", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.ForeColor = System.Drawing.Color.Silver;
-            this.txtUsername.Location = new System.Drawing.Point(3, 27);
+            this.txtUsername.Location = new System.Drawing.Point(35, 26);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(87, 15);
             this.txtUsername.TabIndex = 12;
@@ -203,7 +201,7 @@ namespace Coffeed
             this.txtIP.AutoSize = true;
             this.txtIP.Font = new System.Drawing.Font("Fira Code Retina", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIP.ForeColor = System.Drawing.Color.Silver;
-            this.txtIP.Location = new System.Drawing.Point(3, 3);
+            this.txtIP.Location = new System.Drawing.Point(35, 3);
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(103, 15);
             this.txtIP.TabIndex = 11;
@@ -212,6 +210,8 @@ namespace Coffeed
             // 
             // topPanel
             // 
+            this.topPanel.Controls.Add(this.btnRestore);
+            this.topPanel.Controls.Add(this.btnBackup);
             this.topPanel.Controls.Add(this.button4);
             this.topPanel.Controls.Add(this.button3);
             this.topPanel.Controls.Add(this.pictureBox1);
@@ -225,6 +225,42 @@ namespace Coffeed
             this.topPanel.Size = new System.Drawing.Size(556, 339);
             this.topPanel.TabIndex = 9;
             // 
+            // btnRestore
+            // 
+            this.btnRestore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRestore.BackColor = System.Drawing.Color.DarkViolet;
+            this.btnRestore.BackgroundImage = global::Coffeed.Properties.Resources._3669248_backup_settings_ic_restore_icon;
+            this.btnRestore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRestore.FlatAppearance.BorderColor = System.Drawing.Color.DarkViolet;
+            this.btnRestore.FlatAppearance.BorderSize = 3;
+            this.btnRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestore.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.btnRestore.Location = new System.Drawing.Point(520, 140);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(36, 35);
+            this.btnRestore.TabIndex = 12;
+            this.btnRestore.UseVisualStyleBackColor = false;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
+            // 
+            // btnBackup
+            // 
+            this.btnBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackup.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnBackup.BackgroundImage = global::Coffeed.Properties.Resources._3994345_backup_cloud_server_storage_upload_icon;
+            this.btnBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBackup.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnBackup.FlatAppearance.BorderSize = 3;
+            this.btnBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackup.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.btnBackup.Location = new System.Drawing.Point(520, 105);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(36, 35);
+            this.btnBackup.TabIndex = 11;
+            this.btnBackup.UseVisualStyleBackColor = false;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
+            // 
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -236,7 +272,7 @@ namespace Coffeed
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.button4.Location = new System.Drawing.Point(520, 105);
+            this.button4.Location = new System.Drawing.Point(520, 175);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(36, 35);
             this.button4.TabIndex = 10;
@@ -307,6 +343,44 @@ namespace Coffeed
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // btnModify
+            // 
+            this.btnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModify.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnModify.BackgroundImage = global::Coffeed.Properties.Resources._185042_edit_modify_icon;
+            this.btnModify.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnModify.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnModify.FlatAppearance.BorderSize = 3;
+            this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModify.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.btnModify.Location = new System.Drawing.Point(484, 34);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(36, 35);
+            this.btnModify.TabIndex = 15;
+            this.btnModify.UseVisualStyleBackColor = false;
+            this.btnModify.Visible = false;
+            this.btnModify.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // btnTrash
+            // 
+            this.btnTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTrash.BackColor = System.Drawing.Color.Tomato;
+            this.btnTrash.BackgroundImage = global::Coffeed.Properties.Resources._2849797_trash_basket_multimedia_icon;
+            this.btnTrash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTrash.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
+            this.btnTrash.FlatAppearance.BorderSize = 3;
+            this.btnTrash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrash.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.btnTrash.Location = new System.Drawing.Point(520, 34);
+            this.btnTrash.Name = "btnTrash";
+            this.btnTrash.Size = new System.Drawing.Size(36, 35);
+            this.btnTrash.TabIndex = 14;
+            this.btnTrash.UseVisualStyleBackColor = false;
+            this.btnTrash.Visible = false;
+            this.btnTrash.Click += new System.EventHandler(this.button3_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,6 +426,10 @@ namespace Coffeed
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnCUser;
+        private System.Windows.Forms.Button btnCIP;
+        private System.Windows.Forms.Button btnBackup;
+        private System.Windows.Forms.Button btnRestore;
     }
 }
 

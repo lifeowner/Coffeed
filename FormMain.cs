@@ -7,12 +7,15 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace Coffeed
 {
     public partial class FormMain : Form
     {
-        IniFile settings = new IniFile("coffeed.conf");
+        IniFile settings = new IniFile(Path.Combine(Application.StartupPath,"coffeed.conf"));
         readonly string FileZillaClient = string.Empty;
         readonly string PuttyClient = string.Empty;
         bool isRealExit = false;
@@ -44,9 +47,9 @@ namespace Coffeed
 
             try
             {
-                if (!File.Exists("groups.dat")) File.WriteAllText("groups.dat", string.Empty);
+                if (!File.Exists(Path.Combine(Application.StartupPath,"groups.dat"))) File.WriteAllText(Path.Combine(Application.StartupPath,"groups.dat"), string.Empty);
 
-                if (System.IO.File.Exists("coffeed.conf"))
+                if (System.IO.File.Exists(Path.Combine(Application.StartupPath, "coffeed.conf")))
                 {
                     var startup = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                     if (settings.Read("startup").ToLowerInvariant() == "true")
@@ -185,7 +188,7 @@ namespace Coffeed
                         break;
                     case "Putty":
                         Process puttylogin = new Process();
-                        if (File.Exists("coffeed.conf"))
+                        if (File.Exists(Path.Combine(Application.StartupPath, "coffeed.conf")))
                         {
                             if (string.IsNullOrEmpty(settings.Read("putty_path")))
                             {
@@ -287,6 +290,8 @@ namespace Coffeed
                     txtGroup.Text = string.Empty;
                     btnTrash.Visible = false;
                     btnModify.Visible = false;
+                    btnCIP.Visible = false;
+                    btnCUser.Visible = false;
                 }
             }
         }
@@ -309,6 +314,8 @@ namespace Coffeed
             txtGroup.Text = string.Empty;
             btnTrash.Visible = false;
             btnModify.Visible = false;
+            btnCUser.Visible = false;
+            btnCIP.Visible = false;
 
             if (!string.IsNullOrEmpty(textBox5.Text))
             {
@@ -349,13 +356,15 @@ namespace Coffeed
             var x = AddNew.DB.Find(y => AddNew.Decrypt(y.Name) == serverBox.SelectedItem.ToString());
             txtIP.Text = "IP Address: " + AddNew.Decrypt(x.IP);
             txtUsername.Text = "Username: " + AddNew.Decrypt(x.User);
-            txtGroup.Text = "In Group: " + AddNew.Decrypt(x.Type);
+            txtGroup.Text = "Protocol Type: " + AddNew.Decrypt(x.Type);
 
             txtIP.Visible = true;
             txtUsername.Visible = true;
             txtGroup.Visible = true;
             btnTrash.Visible = true;
             btnModify.Visible = true;
+            btnCUser.Visible = true;
+            btnCIP.Visible = true;
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -389,6 +398,108 @@ namespace Coffeed
                 coffee = MessageBox.Show("You can drink more coffee from now on, using this application, with peace of mind!", "Do you want more coffee?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             }
             while (coffee != DialogResult.Yes);
+        }
+
+        private void btnCIP_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtIP.Text.Replace("IP Address: ", string.Empty).Trim());
+        }
+
+        private void btnCUser_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtUsername.Text.Replace("Username: ", string.Empty).Trim());
+        }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                FormAdd AddNew = new FormAdd();
+                AddNew._publicKey = Application.StartupPath + @"\PublicKey.xml";
+                AddNew._privateKey = Properties.Settings.Default.privkeypath;
+
+                Account tmpAccount;
+                List<Account> unencryptedList = new List<Account>();
+                foreach (var x in AddNew.DB)
+                {
+                    tmpAccount = new Account();
+                    tmpAccount.Type = AddNew.Decrypt(x.Type);
+                    tmpAccount.Name = AddNew.Decrypt(x.Name);
+                    tmpAccount.IP = AddNew.Decrypt(x.IP);
+                    tmpAccount.User = AddNew.Decrypt(x.User);
+                    tmpAccount.Pass = AddNew.Decrypt(x.Pass);
+                    tmpAccount.Port = AddNew.Decrypt(x.Port);
+                    tmpAccount.SFTP = AddNew.Decrypt(x.SFTP);
+                    tmpAccount.Group = AddNew.Decrypt(x.Group);
+
+                    unencryptedList.Add(tmpAccount);
+                }
+
+                SaveFileDialog d = new SaveFileDialog();
+                d.Filter = "XML Database | *.xml";
+                d.InitialDirectory = Application.StartupPath;
+
+                if (d.ShowDialog() == DialogResult.OK)
+                {
+                    XmlSerializer x = new XmlSerializer(unencryptedList.GetType());
+                    StreamWriter sw = new StreamWriter(d.FileName);
+                    x.Serialize(sw, unencryptedList);
+                }
+            }
+            catch (Exception err)
+            {
+                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+                Logging.LogError(err);
+            }
+        }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+                OpenFileDialog d = new OpenFileDialog();
+                d.Filter = "XML Database | *.xml";
+                d.InitialDirectory = Application.StartupPath;
+
+                List<Account> dbFromXml = new List<Account>();
+
+                if (d.ShowDialog() == DialogResult.OK)
+                {
+                    String xData = File.ReadAllText(d.FileName);
+                    XmlSerializer x = new XmlSerializer(typeof(List<Account>));
+                    dbFromXml = (List<Account>)x.Deserialize(new StringReader(xData));
+
+                    FormAdd AddNew = new FormAdd();
+                    AddNew._publicKey = Application.StartupPath + @"\PublicKey.xml";
+                    AddNew._privateKey = Properties.Settings.Default.privkeypath;
+
+                    Account tmpAccount;
+                    foreach (var i in dbFromXml)
+                    {
+                        tmpAccount = new Account();
+                        tmpAccount.Type = AddNew.Encrypt(i.Type);
+                        tmpAccount.Name = AddNew.Encrypt(i.Name);
+                        tmpAccount.IP = AddNew.Encrypt(i.IP);
+                        tmpAccount.User = AddNew.Encrypt(i.User);
+                        tmpAccount.Pass = AddNew.Encrypt(i.Pass);
+                        tmpAccount.Port = AddNew.Encrypt(i.Port);
+                        tmpAccount.SFTP = AddNew.Encrypt(i.SFTP);
+                        tmpAccount.Group = AddNew.Encrypt(i.Group);
+
+                        AddNew.DB.Add(tmpAccount);
+                    }
+                    AddNew.SaveDB(AddNew.DB);
+                    LoadDataToUI();
+                }
+            }
+            catch (Exception err)
+            {
+                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+                Logging.LogError(err);
+            }
         }
     }
 

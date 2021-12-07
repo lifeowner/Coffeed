@@ -31,7 +31,7 @@ namespace Coffeed
         private void button3_Click(object sender, EventArgs e)
         {
             var privsw = new StreamWriter(PrivateKeyPath, false, Encoding.UTF8);
-            var publicsw = new StreamWriter("PublicKey.xml", false, Encoding.UTF8);
+            var publicsw = new StreamWriter(Path.Combine(Application.StartupPath, "PublicKey.xml"), false, Encoding.UTF8);
             if (checkBox1.Checked)
             {
                 try

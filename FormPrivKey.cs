@@ -28,6 +28,7 @@ namespace Coffeed
             {
                 Properties.Settings.Default.privkeypath = privkeypath.Text;
                 Properties.Settings.Default.Save();
+                this.Close();
             }
             else
             {

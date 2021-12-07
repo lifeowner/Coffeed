@@ -29,7 +29,7 @@ namespace Coffeed
                 _privateKey = Properties.Settings.Default.privkeypath;
                 _MODIFY_INDEX = modifyIndex;
 
-                if (File.Exists("DATA.dat")) DB = LoadDB();
+                if (File.Exists(Path.Combine(Application.StartupPath,"DATA.dat"))) DB = LoadDB();
 
 
 
@@ -186,7 +186,7 @@ namespace Coffeed
             try
             {
                 BinaryFormatter bf = new BinaryFormatter();
-                return (List<Account>)bf.Deserialize(new MemoryStream(File.ReadAllBytes("DATA.dat")));
+                return (List<Account>)bf.Deserialize(new MemoryStream(File.ReadAllBytes(Path.Combine(Application.StartupPath,"DATA.dat"))));
             }
             catch (Exception err)
             {
@@ -204,7 +204,7 @@ namespace Coffeed
                 using (var ms = new MemoryStream())
                 {
                     bf.Serialize(ms, dbdata);
-                    File.WriteAllBytes("DATA.dat", ms.ToArray());
+                    File.WriteAllBytes(Path.Combine(Application.StartupPath,"DATA.dat"), ms.ToArray());
                 }
             }
             catch (Exception err)
@@ -249,9 +249,16 @@ namespace Coffeed
             
             groupBox.Items.AddRange(frmAddGroup.groups.Split(','));
         }
-        /*
-* MessageBox.Show(Decrypt(textBox1.Text));
-*/
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string strongPassword = System.Web.Security.Membership.GeneratePassword(18, 1);
+            txtPass.Text = strongPassword;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtPass.Text);
+        }
     }
 }

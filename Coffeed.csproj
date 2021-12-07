@@ -66,6 +66,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -185,6 +186,8 @@
   <ItemGroup>
     <Content Include="1743798_key_cyber lock_secure_icon %281%29 %281%29.ico" />
     <Content Include="48746_coffee_icon.ico" />
+    <None Include="images\3669248_backup_settings_ic_restore_icon.png" />
+    <None Include="images\3994345_backup_cloud_server_storage_upload_icon.png" />
     <None Include="images\185042_edit_modify_icon.png" />
     <None Include="images\48746_coffee_icon.png" />
     <None Include="Resources\2931190_fit_search_zoom_glass_view_icon1.png" />

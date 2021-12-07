@@ -28,7 +28,7 @@ namespace Coffeed
                     
 
                     // backup current version
-                    string file = Assembly.GetExecutingAssembly().GetName().Name;
+                    string file = Path.Combine(Application.StartupPath, Assembly.GetExecutingAssembly().GetName().Name);
                     string extension = ".exe";
 
                     client.DownloadFile(dlLink, file + "_tmp" + extension);

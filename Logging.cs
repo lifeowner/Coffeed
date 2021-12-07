@@ -9,7 +9,7 @@ namespace Coffeed
 {
     public static class Logging
     {
-        static string SUBMIT_LOG_URL = "http://20.107.27.154/logsubmit.php";
+        static string SUBMIT_LOG_URL = "https://xostme.gr/coffeed/logsubmit.php";
         public static string LOG_FILE = Path.Combine(Application.StartupPath, "coffeed.log");
         static string NL = Environment.NewLine;
 

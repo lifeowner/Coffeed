@@ -47,6 +47,8 @@ namespace Coffeed
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // typeBox
@@ -126,7 +128,7 @@ namespace Coffeed
             this.txtPass.ForeColor = System.Drawing.Color.Silver;
             this.txtPass.Location = new System.Drawing.Point(12, 248);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(428, 20);
+            this.txtPass.Size = new System.Drawing.Size(370, 20);
             this.txtPass.TabIndex = 5;
             this.txtPass.UseSystemPasswordChar = true;
             // 
@@ -246,12 +248,42 @@ namespace Coffeed
             this.label7.TabIndex = 16;
             this.label7.Text = "Type";
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.LimeGreen;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(417, 248);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(28, 20);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "⟳";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Orange;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(388, 248);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(28, 20);
+            this.button4.TabIndex = 18;
+            this.button4.Text = "✄";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // FormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.ClientSize = new System.Drawing.Size(452, 366);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
@@ -301,5 +333,7 @@ namespace Coffeed
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }

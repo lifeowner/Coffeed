@@ -10,7 +10,7 @@ namespace Coffeed
 {
     static class Program
     {
-        public static double Version = 0.1;
+        public static double Version = 0.2;
 
         static WebClient client;
 
@@ -34,7 +34,7 @@ namespace Coffeed
 
             if (!string.IsNullOrEmpty(PuttyDetector()) && !string.IsNullOrEmpty(FileZillaDetector()))
             {
-                if (File.Exists("PublicKey.xml"))
+                if (File.Exists(Path.Combine(Application.StartupPath, "PublicKey.xml")))
                 {
                     Application.Run(new FormMain());
                 }
