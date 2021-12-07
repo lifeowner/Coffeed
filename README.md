@@ -4,7 +4,7 @@ A portable windows application that helps you never forget your passwords and in
 <br />
 <br />
 
-<a href="https://github.com/lifeowner/Coffeed/releases/download/0.1/Coffeed.exe" target="_blank"><p align="center"> ![output-onlinetexttools (1)](https://user-images.githubusercontent.com/1441150/141815439-ae59cc2a-1e99-4f71-bc3e-9c41681e2b9e.png) </p></a>
+<a href="https://github.com/lifeowner/Coffeed/releases/download/0.2/Coffeed.exe" target="_blank"><p align="center"> ![output-onlinetexttools (1)](https://user-images.githubusercontent.com/1441150/141815439-ae59cc2a-1e99-4f71-bc3e-9c41681e2b9e.png) </p></a>
 
 <br />
 <br />
@@ -25,6 +25,8 @@ A portable windows application that helps you never forget your passwords and in
 * Tray icon support
 * Right click menu with groups and the credetials you've saved
 * Remote Error Reporter
+* Backup your data in unencrypted format .xml
+* Restore your backup data from unencrypted .xml
 
 ## Releases ##
 https://github.com/lifeowner/coffeed/releases
@@ -38,5 +40,6 @@ https://github.com/lifeowner/coffeed/releases
 * https://github.com/hellzerg
 
 ## Details ##
-* Latest Version: 0.1
+* Latest Version: 0.2
+* Latest build date: 12/07/2021
 * Initial Release date: 11/15/2021
