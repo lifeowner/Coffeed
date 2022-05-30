@@ -10,7 +10,7 @@ namespace Coffeed
 {
     static class Program
     {
-        public static double Version = 0.2;
+        public static double Version = 0.3;
 
         static WebClient client;
 
@@ -137,44 +137,44 @@ namespace Coffeed
 
         public static void InstallFileZilla()
         {
-            try
-            {
-                string link = "http://185.138.43.38/plesk-site-preview/xostme.gr/https/185.138.43.38/FileZilla_3.56.2_win32-setup.exe";
-                if (Environment.Is64BitOperatingSystem) link = "http://185.138.43.38/plesk-site-preview/xostme.gr/https/185.138.43.38/FileZilla_3.56.2_win64-setup.exe";
+            //try
+            //{
+            //    string link = "http://185.138.43.38/plesk-site-preview/xostme.gr/https/185.138.43.38/FileZilla_3.56.2_win32-setup.exe";
+            //    if (Environment.Is64BitOperatingSystem) link = "http://185.138.43.38/plesk-site-preview/xostme.gr/https/185.138.43.38/FileZilla_3.56.2_win64-setup.exe";
 
-                client.DownloadFile(link, Path.Combine(Path.GetTempPath(), "FileZillaSetup.exe"));
+            //    client.DownloadFile(link, Path.Combine(Path.GetTempPath(), "FileZillaSetup.exe"));
 
-                Process p = new Process();
-                p.StartInfo.WorkingDirectory = Path.GetTempPath();
-                p.StartInfo.FileName = Path.Combine(Path.GetTempPath(), "FileZillaSetup.exe");
-                p.Start();
-                p.WaitForExit();
-            }
-            catch (Exception err)
-            {
-                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
-                Logging.LogError(err);
-            }
+            //    Process p = new Process();
+            //    p.StartInfo.WorkingDirectory = Path.GetTempPath();
+            //    p.StartInfo.FileName = Path.Combine(Path.GetTempPath(), "FileZillaSetup.exe");
+            //    p.Start();
+            //    p.WaitForExit();
+            //}
+            //catch (Exception err)
+            //{
+            //    Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+            //    Logging.LogError(err);
+            //}
         }
         public static void InstallPutty()
         {
-            try
-            {
-                string link = "https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.76-installer.msi";
-                if (Environment.Is64BitOperatingSystem) link = "https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.76-installer.msi";
+            //try
+            //{
+            //    string link = "https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.76-installer.msi";
+            //    if (Environment.Is64BitOperatingSystem) link = "https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.76-installer.msi";
 
-                client.DownloadFile(link, Path.Combine(Path.GetTempPath(), "PuttySetup.msi"));
-                Process p = new Process();
-                p.StartInfo.WorkingDirectory = Path.GetTempPath();
-                p.StartInfo.FileName = Path.Combine(Path.GetTempPath(), "PuttySetup.msi");
-                p.Start();
-                p.WaitForExit();
-            }
-            catch (Exception err)
-            {
-                Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
-                Logging.LogError(err);
-            }
+            //    client.DownloadFile(link, Path.Combine(Path.GetTempPath(), "PuttySetup.msi"));
+            //    Process p = new Process();
+            //    p.StartInfo.WorkingDirectory = Path.GetTempPath();
+            //    p.StartInfo.FileName = Path.Combine(Path.GetTempPath(), "PuttySetup.msi");
+            //    p.Start();
+            //    p.WaitForExit();
+            //}
+            //catch (Exception err)
+            //{
+            //    Logging.M(err.Message, "Oops, there's an error that needs special attetion.");
+            //    Logging.LogError(err);
+            //}
         }
     }
 }

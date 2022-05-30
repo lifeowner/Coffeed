@@ -45,6 +45,7 @@ namespace Coffeed
             this.txtUsername = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.Label();
             this.topPanel = new System.Windows.Forms.Panel();
+            this.btnvul = new System.Windows.Forms.Button();
             this.btnRestore = new System.Windows.Forms.Button();
             this.btnBackup = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -65,7 +66,7 @@ namespace Coffeed
             this.serverBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.serverBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.serverBox.ContextMenuStrip = this.listMenu;
-            this.serverBox.Font = new System.Drawing.Font("Fira Code Retina", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serverBox.ForeColor = System.Drawing.Color.DodgerBlue;
             this.serverBox.FormattingEnabled = true;
             this.serverBox.ItemHeight = 20;
@@ -108,7 +109,7 @@ namespace Coffeed
             // 
             // trayMenu
             // 
-            this.trayMenu.Font = new System.Drawing.Font("Fira Code Retina", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trayMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trayMenu.Name = "contextMenuStrip2";
             this.trayMenu.Size = new System.Drawing.Size(61, 4);
             // 
@@ -118,11 +119,11 @@ namespace Coffeed
             this.textBox5.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Font = new System.Drawing.Font("Fira Code Retina", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.ForeColor = System.Drawing.Color.Silver;
             this.textBox5.Location = new System.Drawing.Point(33, 2);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(479, 27);
+            this.textBox5.Size = new System.Drawing.Size(479, 26);
             this.textBox5.TabIndex = 7;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             this.textBox5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox5_KeyDown);
@@ -175,11 +176,11 @@ namespace Coffeed
             // txtGroup
             // 
             this.txtGroup.AutoSize = true;
-            this.txtGroup.Font = new System.Drawing.Font("Fira Code Retina", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGroup.ForeColor = System.Drawing.Color.Silver;
             this.txtGroup.Location = new System.Drawing.Point(1, 51);
             this.txtGroup.Name = "txtGroup";
-            this.txtGroup.Size = new System.Drawing.Size(63, 15);
+            this.txtGroup.Size = new System.Drawing.Size(54, 15);
             this.txtGroup.TabIndex = 13;
             this.txtGroup.Text = "Group: ";
             this.txtGroup.Visible = false;
@@ -187,11 +188,11 @@ namespace Coffeed
             // txtUsername
             // 
             this.txtUsername.AutoSize = true;
-            this.txtUsername.Font = new System.Drawing.Font("Fira Code Retina", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.ForeColor = System.Drawing.Color.Silver;
             this.txtUsername.Location = new System.Drawing.Point(35, 26);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(87, 15);
+            this.txtUsername.Size = new System.Drawing.Size(81, 15);
             this.txtUsername.TabIndex = 12;
             this.txtUsername.Text = "Username: ";
             this.txtUsername.Visible = false;
@@ -199,17 +200,18 @@ namespace Coffeed
             // txtIP
             // 
             this.txtIP.AutoSize = true;
-            this.txtIP.Font = new System.Drawing.Font("Fira Code Retina", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIP.ForeColor = System.Drawing.Color.Silver;
             this.txtIP.Location = new System.Drawing.Point(35, 3);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(103, 15);
+            this.txtIP.Size = new System.Drawing.Size(83, 15);
             this.txtIP.TabIndex = 11;
             this.txtIP.Text = "IP Address: ";
             this.txtIP.Visible = false;
             // 
             // topPanel
             // 
+            this.topPanel.Controls.Add(this.btnvul);
             this.topPanel.Controls.Add(this.btnRestore);
             this.topPanel.Controls.Add(this.btnBackup);
             this.topPanel.Controls.Add(this.button4);
@@ -225,6 +227,24 @@ namespace Coffeed
             this.topPanel.Size = new System.Drawing.Size(556, 339);
             this.topPanel.TabIndex = 9;
             // 
+            // btnvul
+            // 
+            this.btnvul.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnvul.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnvul.BackgroundImage = global::Coffeed.Properties.Resources.bugfinder;
+            this.btnvul.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnvul.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnvul.FlatAppearance.BorderSize = 3;
+            this.btnvul.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnvul.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnvul.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.btnvul.Location = new System.Drawing.Point(520, 175);
+            this.btnvul.Name = "btnvul";
+            this.btnvul.Size = new System.Drawing.Size(36, 35);
+            this.btnvul.TabIndex = 13;
+            this.btnvul.UseVisualStyleBackColor = false;
+            this.btnvul.Click += new System.EventHandler(this.btnvul_Click);
+            // 
             // btnRestore
             // 
             this.btnRestore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -234,7 +254,7 @@ namespace Coffeed
             this.btnRestore.FlatAppearance.BorderColor = System.Drawing.Color.DarkViolet;
             this.btnRestore.FlatAppearance.BorderSize = 3;
             this.btnRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRestore.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestore.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRestore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.btnRestore.Location = new System.Drawing.Point(520, 140);
             this.btnRestore.Name = "btnRestore";
@@ -252,7 +272,7 @@ namespace Coffeed
             this.btnBackup.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
             this.btnBackup.FlatAppearance.BorderSize = 3;
             this.btnBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackup.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.btnBackup.Location = new System.Drawing.Point(520, 105);
             this.btnBackup.Name = "btnBackup";
@@ -270,9 +290,9 @@ namespace Coffeed
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
             this.button4.FlatAppearance.BorderSize = 3;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.button4.Location = new System.Drawing.Point(520, 175);
+            this.button4.Location = new System.Drawing.Point(520, 210);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(36, 35);
             this.button4.TabIndex = 10;
@@ -288,7 +308,7 @@ namespace Coffeed
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
             this.button3.FlatAppearance.BorderSize = 3;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.button3.Location = new System.Drawing.Point(520, 70);
             this.button3.Name = "button3";
@@ -316,7 +336,7 @@ namespace Coffeed
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.button1.FlatAppearance.BorderSize = 3;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.button1.Location = new System.Drawing.Point(520, 0);
             this.button1.Name = "button1";
@@ -334,7 +354,7 @@ namespace Coffeed
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Purple;
             this.button2.FlatAppearance.BorderSize = 3;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.button2.Location = new System.Drawing.Point(520, 35);
             this.button2.Name = "button2";
@@ -352,7 +372,7 @@ namespace Coffeed
             this.btnModify.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
             this.btnModify.FlatAppearance.BorderSize = 3;
             this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModify.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.btnModify.Location = new System.Drawing.Point(484, 34);
             this.btnModify.Name = "btnModify";
@@ -371,7 +391,7 @@ namespace Coffeed
             this.btnTrash.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
             this.btnTrash.FlatAppearance.BorderSize = 3;
             this.btnTrash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTrash.Font = new System.Drawing.Font("Fira Code Retina", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrash.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.btnTrash.Location = new System.Drawing.Point(520, 34);
             this.btnTrash.Name = "btnTrash";
@@ -430,6 +450,7 @@ namespace Coffeed
         private System.Windows.Forms.Button btnCIP;
         private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.Button btnRestore;
+        private System.Windows.Forms.Button btnvul;
     }
 }
 

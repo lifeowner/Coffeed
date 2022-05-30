@@ -79,6 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoPatcher.cs" />
+    <Compile Include="bugfinder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bugfinder.Designer.cs">
+      <DependentUpon>bugfinder.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     <Compile Include="MessageBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="bugfinder.resx">
+      <DependentUpon>bugfinder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +195,7 @@
   <ItemGroup>
     <Content Include="1743798_key_cyber lock_secure_icon %281%29 %281%29.ico" />
     <Content Include="48746_coffee_icon.ico" />
+    <None Include="images\bugfinder.png" />
     <None Include="images\3669248_backup_settings_ic_restore_icon.png" />
     <None Include="images\3994345_backup_cloud_server_storage_upload_icon.png" />
     <None Include="images\185042_edit_modify_icon.png" />

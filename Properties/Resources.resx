@@ -130,22 +130,25 @@
   <data name="3325032_settings_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\3325032_settings_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="3994345_backup_cloud_server_storage_upload_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\3994345_backup_cloud_server_storage_upload_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="2931190_fit_search_zoom_glass_view_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2931190_fit_search_zoom_glass_view_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="48746_coffee_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\48746_coffee_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="3994345_backup_cloud_server_storage_upload_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\3994345_backup_cloud_server_storage_upload_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="2849797_trash_basket_multimedia_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2849797_trash_basket_multimedia_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="3669248_backup_settings_ic_restore_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\3669248_backup_settings_ic_restore_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="48746_coffee_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\48746_coffee_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="185042_edit_modify_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\185042_edit_modify_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="3669248_backup_settings_ic_restore_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\3669248_backup_settings_ic_restore_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bugfinder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\bugfinder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

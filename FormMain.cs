@@ -501,6 +501,12 @@ namespace Coffeed
                 Logging.LogError(err);
             }
         }
+
+        private void btnvul_Click(object sender, EventArgs e)
+        {
+            bugfinder bfrm = new bugfinder();
+            bfrm.ShowDialog();
+        }
     }
 
 
