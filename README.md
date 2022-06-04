@@ -4,7 +4,7 @@ A portable windows application that helps you never forget your passwords and in
 <br />
 <br />
 
-<a href="https://github.com/lifeowner/Coffeed/releases/download/0.3/Coffeed.exe" target="_blank"><p align="center"> ![output-onlinetexttools (1)](https://user-images.githubusercontent.com/1441150/141815439-ae59cc2a-1e99-4f71-bc3e-9c41681e2b9e.png) </p></a>
+<a href="https://github.com/lifeowner/Coffeed/releases/download/0.4/Coffeed.exe" target="_blank"><p align="center"> ![output-onlinetexttools (1)](https://user-images.githubusercontent.com/1441150/141815439-ae59cc2a-1e99-4f71-bc3e-9c41681e2b9e.png) </p></a>
 
 <br />
 <br />
@@ -31,6 +31,10 @@ A portable windows application that helps you never forget your passwords and in
 * Min/Max Port
 * Pinging a host on port (from the open ports listbox)
 * Scan history
+* Download Mariadb
+* Install Databases
+* Start / Stop MariaDB
+* Track if it's Online or Offline
 
 ## Releases ##
 https://github.com/lifeowner/coffeed/releases
@@ -45,5 +49,5 @@ https://github.com/lifeowner/coffeed/releases
 
 ## Details ##
 * Latest Version: 0.3
-* Latest build date: 31/05/2022
+* Latest build date: 04/06/2022
 * Initial Release date: 11/15/2021
