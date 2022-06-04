@@ -66,6 +66,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -138,6 +140,12 @@
     <Compile Include="MessageBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WebServer.Designer.cs">
+      <DependentUpon>WebServer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="bugfinder.resx">
       <DependentUpon>bugfinder.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +183,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WebServer.resx">
+      <DependentUpon>WebServer.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="5years.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -195,6 +206,8 @@
   <ItemGroup>
     <Content Include="1743798_key_cyber lock_secure_icon %281%29 %281%29.ico" />
     <Content Include="48746_coffee_icon.ico" />
+    <None Include="Resources\7422372_visualstudio_visual_developer_code_icon %281%29.png" />
+    <None Include="Resources\7422372_visualstudio_visual_developer_code_icon.png" />
     <None Include="images\bugfinder.png" />
     <None Include="images\3669248_backup_settings_ic_restore_icon.png" />
     <None Include="images\3994345_backup_cloud_server_storage_upload_icon.png" />

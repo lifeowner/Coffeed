@@ -153,6 +153,26 @@ namespace Coffeed.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _7422372_visualstudio_visual_developer_code_icon {
+            get {
+                object obj = ResourceManager.GetObject("7422372_visualstudio_visual_developer_code_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _7422372_visualstudio_visual_developer_code_icon__1_ {
+            get {
+                object obj = ResourceManager.GetObject("7422372_visualstudio_visual_developer_code_icon (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _8207898_about_info_information_help_ui_icon {
             get {
                 object obj = ResourceManager.GetObject("8207898_about_info_information_help_ui_icon", resourceCulture);

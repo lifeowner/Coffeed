@@ -45,6 +45,7 @@ namespace Coffeed
             this.txtUsername = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.Label();
             this.topPanel = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.btnvul = new System.Windows.Forms.Button();
             this.btnRestore = new System.Windows.Forms.Button();
             this.btnBackup = new System.Windows.Forms.Button();
@@ -211,6 +212,7 @@ namespace Coffeed
             // 
             // topPanel
             // 
+            this.topPanel.Controls.Add(this.button5);
             this.topPanel.Controls.Add(this.btnvul);
             this.topPanel.Controls.Add(this.btnRestore);
             this.topPanel.Controls.Add(this.btnBackup);
@@ -226,6 +228,24 @@ namespace Coffeed
             this.topPanel.Name = "topPanel";
             this.topPanel.Size = new System.Drawing.Size(556, 339);
             this.topPanel.TabIndex = 9;
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.BackColor = System.Drawing.Color.Tomato;
+            this.button5.BackgroundImage = global::Coffeed.Properties.Resources._7422372_visualstudio_visual_developer_code_icon__1_;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
+            this.button5.FlatAppearance.BorderSize = 3;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.button5.Location = new System.Drawing.Point(520, 210);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(36, 35);
+            this.button5.TabIndex = 14;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // btnvul
             // 
@@ -292,7 +312,7 @@ namespace Coffeed
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.button4.Location = new System.Drawing.Point(520, 210);
+            this.button4.Location = new System.Drawing.Point(520, 245);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(36, 35);
             this.button4.TabIndex = 10;
@@ -451,6 +471,7 @@ namespace Coffeed
         private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.Button btnvul;
+        private System.Windows.Forms.Button button5;
     }
 }
 

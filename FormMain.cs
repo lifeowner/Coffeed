@@ -507,6 +507,20 @@ namespace Coffeed
             bugfinder bfrm = new bugfinder();
             bfrm.ShowDialog();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WebServer wsf = new WebServer();
+                wsf.ShowDialog();
+            }
+            catch
+            {
+
+            }
+
+        }
     }
 
 

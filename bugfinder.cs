@@ -40,8 +40,8 @@ namespace Coffeed
             IPEndPoint ipEo = new IPEndPoint(ipo, port);
             try
             {
-                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);  // Verbindung vorbereiten
-                IAsyncResult result = sock.BeginConnect(ipEo,null,null);
+                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                IAsyncResult result = sock.BeginConnect(ipEo, null, null);
                 bool success = result.AsyncWaitHandle.WaitOne(100, true);
                 if (sock.Connected)
                 {
