@@ -10,7 +10,7 @@ namespace Coffeed
 {
     static class Program
     {
-        public static double Version = 0.3;
+        public static double Version = 0.4;
 
         static WebClient client;
 
