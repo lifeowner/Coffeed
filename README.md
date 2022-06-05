@@ -48,6 +48,6 @@ https://github.com/lifeowner/coffeed/releases
 * https://github.com/hellzerg
 
 ## Details ##
-* Latest Version: 0.3
+* Latest Version: 0.4
 * Latest build date: 04/06/2022
 * Initial Release date: 11/15/2021
